@@ -1,0 +1,21 @@
+*.opensdf
+*.sdf
+*.suo
+Debug/*
+x64/*
+PoCUtraISOKeyGen/x64/*
+PoCUtraISOKeyGen/Debug/*
+*.pdb
+
+#source insight project
+*.IAB
+*.IAD
+*.IMB
+*.IMD
+*.PFI
+*.PO
+*.PR
+*.PRI
+*.PS
+*.WK3
+*.PDF
