@@ -13,7 +13,7 @@ int main()
 IT ONLY HAS THE POSSIBILITIES TO CALCULATE THE CORRECT KEY.
 IT USES BOTH CPU AND GPU TO ACCELERATE CALCULATION.
 
-SRC ON GITHUB: https://github.com/yufengzjj/PoCUtraISOKeyGen.git
+SRC ON GITHUB: https://github.com/yufengzjj/PoCUltraISOKeyGen.git
 
 
 GOOD LUCK!
