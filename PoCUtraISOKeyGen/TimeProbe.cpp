@@ -45,8 +45,8 @@ void TimeProbe::print()
     m_mtx.lock();
     for (auto probe : m_ticker)
     {
-        std::cout << probe.first << " costs:";
-        std::cout << std::get<0>(probe.second).count() << "seconds ";
+        std::cout << probe.first << " COSTS:";
+        std::cout << std::get<0>(probe.second).count() << " SECONDS ";
         std::cout << std::endl;
     }
     m_mtx.unlock();

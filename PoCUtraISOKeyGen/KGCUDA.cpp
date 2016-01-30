@@ -50,9 +50,9 @@ void KGCUDA::set_name(std::string name)
 void KGCUDA::print_gpu_properties()
 {
     printf("GPU:%s\n", m_gpu_prop.name);
-    printf("multiProcessor Count:%d\n", m_gpu_prop.multiProcessorCount);
-    printf("launched threads:%d\n", num_threads_preblock);
-    printf("launched blocks:%d\n", num_blocks);
+    printf("MULTIPROCESSOR COUNT:%d\n", m_gpu_prop.multiProcessorCount);
+    printf("LAUNCHED THREADS:%d\n", num_threads_preblock);
+    printf("LAUNCHED BLOCKS:%d\n", num_blocks);
 }
 
 void KGCUDA::test()
@@ -166,7 +166,7 @@ void KGCUDA::locate(int step)
             curr_line = 15;
             if (++local_step >= step)
             {
-                printf("registration code:");
+                printf("REGISTRATION CODE:");
                 std::string pat;
                 for (int i = 0; i < 16; i++)
                 {

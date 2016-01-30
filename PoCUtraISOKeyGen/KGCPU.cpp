@@ -21,7 +21,7 @@ KGCPU::KGCPU()
     m_gpu.set_dict(m_gpu_dict);
 
     m_name.resize(64);
-    printf("enter user name:");
+    printf("ENTER NAME:");
     std::cin.getline(const_cast<char*>(m_name.c_str()), m_name.size());
     m_name = "UTRISO" + m_name;
     m_name.resize(strlen(m_name.c_str()));
@@ -42,7 +42,7 @@ KGCPU::~KGCPU()
 
 void KGCPU::drive()
 {
-    m_time_probe.tick_start("keygen");
+    m_time_probe.tick_start("KEYGEN");
     std::thread td(&KGCPU::drive_gpu, this);
 
     int core_num = get_CPU_core_num();
@@ -71,7 +71,7 @@ void KGCPU::drive()
     {
         td.join();
     }
-    m_time_probe.tick_stop("keygen");
+    m_time_probe.tick_stop("KEYGEN");
     m_time_probe.print();
 }
 
@@ -748,7 +748,7 @@ void KGCPU::drive_cpu(Task* range)
                     if (result >= 0)
                     {
                         // success
-                        printf("registration code:");
+                        printf("REGISTRATION CODE:");
                         printf("%s\n", reinterpret_cast<char *>(&msg[len]));
                     }
                     i = index + 1;

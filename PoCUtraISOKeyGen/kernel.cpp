@@ -8,6 +8,15 @@
 
 int main()
 {
+    printf(
+        R"(THIS IS A PROOF OF CONCEPT KEYGEN.
+IT ONLY HAS THE POSSIBILITIES TO CALCULATE THE CORRECT KEY.
+IT USES BOTH CPU AND GPU TO ACCELERATE CALCULATION.
+
+GOOD LUCK!
+
+
+)");
     KGCPU cpu;
     cpu.drive();
     char input;
