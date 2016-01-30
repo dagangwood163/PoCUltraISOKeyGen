@@ -44,28 +44,28 @@ void KGCPU::drive()
     m_time_probe.tick_start("keygen");
     std::thread td(&KGCPU::drive_gpu, this);
 
-    /*int core_num = get_CPU_core_num();
+    int core_num = get_CPU_core_num();
     core_num /= 2;
     if (core_num == 0)
     {
-    core_num = 1;
+        core_num = 1;
     }
     std::thread** cpu_threads = new std::thread *[core_num];
     while (!m_finished)
     {
-    for (int i = core_num - 1; i >= 0; i--)
-    {
-    cpu_threads[i] =
-    new std::thread(&KGCPU::drive_cpu, this, request_task(capability));
-    }
+        for (int i = core_num - 1; i >= 0; i--)
+        {
+            cpu_threads[i] =
+                new std::thread(&KGCPU::drive_cpu, this, request_task(capability));
+        }
 
-    for (int i = core_num - 1; i >= 0; i--)
-    {
-    if (cpu_threads[i]->joinable())
-    cpu_threads[i]->join();
-    delete cpu_threads[i];
+        for (int i = core_num - 1; i >= 0; i--)
+        {
+            if (cpu_threads[i]->joinable())
+                cpu_threads[i]->join();
+            delete cpu_threads[i];
+        }
     }
-    }*/
     if (td.joinable())
     {
         td.join();
@@ -374,7 +374,7 @@ void KGCPU::drive_gpu_test()
 
 void KGCPU::drive_test()
 {
-    char* _gpu_dict[]{
+    char* gpu_dict[]{
         "\x4\x5",
             "\x5\x6",
             "\x0\x1\x2\x3\x4\x5\x6\x7\x8\x9\xA\xB\xC\xD\xE\xF",
@@ -385,29 +385,12 @@ void KGCPU::drive_test()
             "\xA\xB\xC",
             "\x5",
             "\x3",
-            "\x6",
-            "\x5",
-            "\x4",
-            "\xF",
-            "\x4",
-            "\xF"};
-    char* gpu_dict[]{
-        "\x5",
-            "\x5",
-            "\x5",
-            "\x3",
-            "\x6\x7\x8\x9\xA\xB\xC\xD\xE\xF",
-            "\x5\x6\x7\x8\x9\xA\xB\xC\xD\xE\xF",
-            "\x2\xD",
-            "\xC",
-            "\x5",
+            "\x7",
             "\x3",
             "\x6",
-            "\x5",
-            "\x4",
             "\xF",
-            "\x4",
-            "\xF"};
+            "\x2",
+            "\x1"};
     char* cpu_dict[]{
         "45",
             "56",
@@ -419,13 +402,13 @@ void KGCPU::drive_test()
             "ABC",
             "5",
             "3",
+            "7",
+            "3",
             "6",
-            "5",
-            "4",
             "F",
-            "4",
-            "F"};
-    short _range[32] = {
+            "2",
+            "1"};
+    short range[32] = {
         0, 1,
         0, 1,
         0, 15,
@@ -434,23 +417,6 @@ void KGCPU::drive_test()
         0, 15,
         0, 1,
         0, 2,
-        0, 0,
-        0, 0,
-        0, 0,
-        0, 0,
-        0, 0,
-        0, 0,
-        0, 0,
-        0, 0 };
-    short range[32] = {
-        0, 0,
-        0, 0,
-        0, 0,
-        0, 0,
-        0, 0,
-        0, 0,
-        0, 0,
-        0, 0,
         0, 0,
         0, 0,
         0, 0,
@@ -474,7 +440,7 @@ void KGCPU::drive_test()
             Task::m_globe_range[i] = range[i];
         }
     };
-    exhange(0, 15);
+    exhange(8, 15);
     fixrange();
     drive();
 }
