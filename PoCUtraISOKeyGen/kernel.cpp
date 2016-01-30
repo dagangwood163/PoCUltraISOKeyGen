@@ -9,7 +9,9 @@
 int main()
 {
     KGCPU cpu;
-    cpu.test();
+    cpu.drive();
+    char input;
+    while (scanf("%c",&input) != EOF);
     return 0;
 }
 

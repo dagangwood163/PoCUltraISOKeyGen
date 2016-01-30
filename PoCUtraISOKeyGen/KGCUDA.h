@@ -29,8 +29,6 @@ public:
     //calculate kernel blocks and threads.
     void compatible();
 
-    void init_globe_range();
-
 
     //test functions
     void test_capability();

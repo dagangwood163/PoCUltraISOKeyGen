@@ -4,7 +4,6 @@ class Task
 public:
     Task();
     ~Task();
-private:
     static void init_globe_range();
 public:
     size_t count;

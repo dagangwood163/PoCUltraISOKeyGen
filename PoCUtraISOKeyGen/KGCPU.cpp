@@ -29,6 +29,7 @@ KGCPU::KGCPU()
 
     memset(m_globe_selected_pos, 0, 16 * sizeof(short));
     m_globe_selected_pos[15] = -1; // it won't miss the first pat.
+    Task::init_globe_range();
 
     mpz_init_set_str(n, modulus_n, 16);
     mpz_init_set_str(d, d_str, 16);
@@ -76,7 +77,7 @@ void KGCPU::drive()
 
 void KGCPU::test()
 {
-    //product_dict_test();
+    product_dict_test();
     // request_task_test();
     // drive_cpu_test();
     //drive_gpu_test();
@@ -385,12 +386,12 @@ void KGCPU::drive_test()
             "\xA\xB\xC",
             "\x5",
             "\x3",
-            "\x7",
-            "\x3",
-            "\x6",
-            "\xF",
             "\x2",
-            "\x1"};
+            "\x0",
+            "\x2",
+            "\x0",
+            "\x4",
+            "\x0\x1\x2\x3\x4\x5\x6\x7\x8\x9\xA\xB\xC\xD\xE\xF"};
     char* cpu_dict[]{
         "45",
             "56",
@@ -402,12 +403,12 @@ void KGCPU::drive_test()
             "ABC",
             "5",
             "3",
-            "7",
-            "3",
-            "6",
-            "F",
             "2",
-            "1"};
+            "0",
+            "2",
+            "0",
+            "4",
+            "0123456789ABCDEF"};
     short range[32] = {
         0, 1,
         0, 1,
@@ -424,7 +425,7 @@ void KGCPU::drive_test()
         0, 0,
         0, 0,
         0, 0,
-        0, 0 };
+        0, 15 };
     auto exhange = [&](int n, int m)
     {
         for (int i = n; i < m + 1; i++)
@@ -440,7 +441,15 @@ void KGCPU::drive_test()
             Task::m_globe_range[i] = range[i];
         }
     };
-    exhange(8, 15);
+    for (int i = 0; i < 32; i++)
+    {
+        printf("%d ", Task::m_globe_range[i]);
+        if (i % 2 == 1)
+        {
+            printf("\n");
+        }
+    }
+    exhange(8, 14);
     fixrange();
     drive();
 }
