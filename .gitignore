@@ -19,3 +19,5 @@ PoCUtraISOKeyGen/Debug/*
 *.PS
 *.WK3
 *.PDF
+
+.idea/*
